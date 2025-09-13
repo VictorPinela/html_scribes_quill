@@ -1,0 +1,124 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* Defina as cores personalizadas primeiro */
+@layer base {
+  :root {
+    --color-metallic-50: #e6f0ff;
+    --color-metallic-100: #cce0ff;
+    --color-metallic-200: #99c2ff;
+    --color-metallic-300: #66a3ff;
+    --color-metallic-400: #3385ff;
+    --color-metallic-500: #0066ff;
+    --color-metallic-600: #0052cc;
+    --color-metallic-700: #003d99;
+    --color-metallic-800: #002966;
+    --color-metallic-900: #001433;
+    
+    --color-steel-50: #f8fafc;
+    --color-steel-100: #f1f5f9;
+    --color-steel-200: #e2e8f0;
+    --color-steel-300: #cbd5e1;
+    --color-steel-400: #94a3b8;
+    --color-steel-500: #64748b;
+    --color-steel-600: #475569;
+    --color-steel-700: #334155;
+    --color-steel-800: #1e293b;
+    --color-steel-900: #0f172a;
+    
+    --color-parchment: #faf7f0;
+    --color-ink: #1a202c;
+  }
+}
+
+@layer base {
+  body {
+    background: linear-gradient(135deg, 
+      var(--color-metallic-800) 0%,
+      var(--color-metallic-700) 50%,
+      var(--color-metallic-900) 100%);
+    color: var(--color-parchment);
+    font-family: 'Crimson Text', serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background-color: var(--color-metallic-500);
+    color: white;
+    font-family: 'Cinzel', serif;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--color-metallic-600);
+    transform: scale(1.05);
+  }
+  
+  .btn-secondary {
+    background-color: var(--color-steel-600);
+    color: var(--color-parchment);
+    font-family: 'Cinzel', serif;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+  }
+  
+  .btn-secondary:hover {
+    background-color: var(--color-steel-700);
+  }
+  
+  .card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 102, 255, 0.3);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(0, 102, 255, 0.3);
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: var(--color-parchment);
+  }
+  
+  .input-field:focus {
+    outline: 2px solid var(--color-metallic-500);
+    outline-offset: 2px;
+    border-color: transparent;
+  }
+  
+  .input-field::placeholder {
+    color: rgba(204, 224, 255, 0.6);
+  }
+}
+
+/* Efeito de brilho metálico */
+.metallic-shine {
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  background-size: 200% 200%;
+  animation: metallic-shine 3s ease-in-out infinite;
+}
+
+@keyframes metallic-shine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
