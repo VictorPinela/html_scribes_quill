@@ -1,4 +1,5 @@
 import React from 'react';
+import logoImage from '../../assets/Logo Scribes Quill.png';
 
 interface LogoProps {
     size?: 'sm' | 'md' | 'lg';
@@ -26,7 +27,7 @@ export const Logo: React.FC<LogoProps> = ({
     return (
         <div className={`flex items-center space-x-3 ${className}`}>
             <img
-                src="/src/assets/Logo Scribes Quill.png"
+                src={logoImage}
                 alt="Scribe's Quill Logo"
                 className={`${sizeClasses[size]} object-contain`}
                 onError={(e) => {
@@ -36,7 +37,7 @@ export const Logo: React.FC<LogoProps> = ({
                 }}
             />
 
-            <div className={`${sizeClasses[size]} bg-gold rounded-full flex items-center justify-center border-2 border-ink hidden`}>
+            <div className={`${sizeClasses[size]} bg-gold rounded-full flex items-center justify-center border-2 border-ink`}>
                 <span className="text-ink font-medieval font-bold text-xs">D20</span>
             </div>
 
