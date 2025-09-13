@@ -1,5 +1,5 @@
 import React from 'react';
-import logoImage from '../../assets/Logo Scribes Quill.png';
+import logoImage from '../../assets/logo.png';
 
 interface LogoProps {
     size?: 'sm' | 'md' | 'lg';
@@ -18,35 +18,19 @@ export const Logo: React.FC<LogoProps> = ({
         lg: 'w-16 h-16'
     };
 
-    const textSizes = {
-        sm: 'text-sm',
-        md: 'text-lg',
-        lg: 'text-xl'
-    };
-
     return (
         <div className={`flex items-center space-x-3 ${className}`}>
             <img
                 src={logoImage}
-                alt="Scribe's Quill Logo"
+                alt="Scribe's Quill"
                 className={`${sizeClasses[size]} object-contain`}
-                onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    target.nextElementSibling?.classList.remove('hidden');
-                }}
             />
-
-            <div className={`${sizeClasses[size]} bg-gold rounded-full flex items-center justify-center border-2 border-ink`}>
-                <span className="text-ink font-medieval font-bold text-xs">D20</span>
-            </div>
-
             {showText && (
                 <div className="flex flex-col">
-                    <span className={`font-medieval font-bold text-ink ${textSizes[size]} leading-none`}>
+                    <span className="font-medieval font-bold text-white text-lg leading-none">
                         SCRIBE'S QUILL
                     </span>
-                    <span className="text-xs text-ink/70 italic">Escreva sua lenda</span>
+                    <span className="text-xs text-blue-200 italic">Escreva sua lenda</span>
                 </div>
             )}
         </div>
