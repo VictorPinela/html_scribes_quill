@@ -15,8 +15,5 @@
       "dest": "/index.html",
       "methods": ["GET"]
     }
-  ],
-  "env": {
-    "VITE_API_URL": "https://api-scribes-quill-90be4514fafb.herokuapp.com"
-  }
+  ]
 }
