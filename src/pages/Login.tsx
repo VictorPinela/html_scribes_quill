@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Logo } from '../components/ui/Logo';
 import { Eye, EyeOff, Sword, AlertCircle } from 'lucide-react';
 import { authService } from '../services/authService';
+import { useAuth } from '../contexts/AuthContext';
 
 export const Login: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -12,6 +13,8 @@ export const Login: React.FC = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const { login } = useAuth();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -25,12 +28,24 @@ export const Login: React.FC = () => {
         setError('');
 
         try {
+
             const response = await authService.login({ email, password });
 
-            localStorage.setItem('token', response.token);
-            localStorage.setItem('user', JSON.stringify(response.user));
+            login(response.token, response.user);
 
-            navigate('/dashboard');
+            let redirectPath = '/dashboard';
+
+            if (location.state?.from) {
+                const fromPath = location.state.from;
+                const invalidPaths = ['/login', '/register', '/load'];
+
+                if (typeof fromPath === 'string' && !invalidPaths.includes(fromPath)) {
+                    redirectPath = fromPath;
+                }
+            }
+
+            navigate(redirectPath, { replace: true });
+
         } catch (error: unknown) {
             let errorMessage = 'Erro ao fazer login';
 
@@ -58,10 +73,10 @@ export const Login: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-950 flex items-center justify-center p-4">
-            <div className="bg-white/10 backdrop-blur-md border-2 border-blue-400/30 rounded-xl shadow-2xl p-6 border-opacity-20 max-w-md w-full space-y-8">
+            <div className="bg-white/10 backdrop-blur-md border-2 border-blue-400/30 rounded-xl shadow-2xl p-6 border-opacity-20 w-full space-y-8">
                 {/* Logo */}
                 <div className="text-center">
-                    <Logo size="lg" className="justify-center mb-4" />
+                    <Logo size="xl" className="justify-center mb-4" showText />
                     <h2 className="text-3xl font-cinzel text-white">Entre na sua conta</h2>
                     <p className="text-blue-200 mt-2">
                         Ou{' '}
@@ -150,9 +165,9 @@ export const Login: React.FC = () => {
                 {/* Decoração temática */}
                 <div className="text-center pt-6 border-t border-blue-400/20">
                     <div className="inline-flex items-center space-x-1 text-blue-200">
-                        <span className="text-sm">✨</span>
-                        <span className="text-xs italic">Que seus dados sejam sempre altos</span>
-                        <span className="text-sm">✨</span>
+                        <span className="text-lg">✨</span>
+                        <span className="text-lg italic">Que seus dados sejam sempre altos</span>
+                        <span className="text-lg">✨</span>
                     </div>
                 </div>
             </div>

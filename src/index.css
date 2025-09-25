@@ -122,3 +122,71 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+@keyframes cardHover {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-2px); }
+}
+
+.character-card {
+  transition: all 0.3s ease;
+}
+
+.character-card:hover {
+  animation: cardHover 0.3s ease forwards;
+}
+
+/* Cores específicas para classes */
+.bg-guerrerio { background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%); }
+.bg-mago { background: linear-gradient(135deg, #bee3f8 0%, #90cdf4 100%); }
+.bg-clerigo { background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%); }
+.bg-ladino { background: linear-gradient(135deg, #fefcbf 0%, #faf089 100%); }
+.bg-ranger { background: linear-gradient(135deg, #c6f6d5 0%, #9ae6b4 100%); }
+.bg-barbaro { background: linear-gradient(135deg, #feebc8 0%, #fbd38d 100%); }
+.bg-bardo { background: linear-gradient(135deg, #e9d8fd 0%, #d6bcfa 100%); }
+.bg-monge { background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%); }
+.bg-paladino { background: linear-gradient(135deg, #fed7e2 0%, #fbb6ce 100%); }
+.bg-druida { background: linear-gradient(135deg, #b2f5ea 0%, #81e6d9 100%); }
+
+/* Animações customizadas */
+@keyspin spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-dice {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(180deg); }
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.3; }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+.animate-pulse-dice {
+  animation: pulse-dice 1s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Efeito de brilho metálico */
+.metallic-spinner {
+  background: conic-gradient(
+    transparent 0deg,
+    rgba(255, 255, 255, 0.3) 60deg,
+    transparent 120deg,
+    rgba(255, 255, 255, 0.6) 180deg,
+    transparent 240deg,
+    rgba(255, 255, 255, 0.3) 300deg,
+    transparent 360deg
+  );
+  mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+}

@@ -3,7 +3,7 @@ import {
   type RegisterData,
   type LoginData,
   type AuthResponse,
-  //   type ApiError,
+  // type ApiError,
   type User,
 } from "../types";
 import axios from "axios";

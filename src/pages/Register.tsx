@@ -116,7 +116,7 @@ export const Register: React.FC = () => {
             localStorage.setItem('token', response.token);
             localStorage.setItem('user', JSON.stringify(response.user));
 
-            navigate('/dashboard');
+            navigate('/email-confirmation');
 
         } catch (error: unknown) {
             console.error('Erro no registro:', error);
@@ -164,10 +164,10 @@ export const Register: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-950 flex items-center justify-center p-4">
-            <div className="bg-white/10 backdrop-blur-md border-2 border-blue-400/30 rounded-xl shadow-2xl p-6 border-opacity-20 max-w-md w-full space-y-8">
+            <div className="bg-white/10 backdrop-blur-md border-2 border-blue-400/30 rounded-xl shadow-2xl p-6 border-opacity-20 w-full space-y-8">
                 {/* Logo */}
                 <div className="text-center">
-                    <Logo size="lg" className="justify-center mb-4" />
+                    <Logo size="xl" className="justify-center mb-4" showText />
                     <h2 className="text-3xl font-cinzel text-white">Crie sua conta</h2>
                     <p className="text-blue-200 mt-2">
                         Ou{' '}
@@ -363,9 +363,9 @@ export const Register: React.FC = () => {
                 {/* Decoração temática */}
                 <div className="text-center pt-6 border-t border-blue-400/20">
                     <div className="inline-flex items-center space-x-2 text-blue-200">
-                        <Shield size={16} />
-                        <span className="text-xs italic">Suas informações estão protegidas</span>
-                        <Shield size={16} />
+                        <Shield size={28} />
+                        <span className="text-xl italic">Suas informações estão protegidas</span>
+                        <Shield size={28} />
                     </div>
                 </div>
             </div>
